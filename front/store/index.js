@@ -1,9 +1,14 @@
 export const state = () => ({
   //ログインフラグ
   //vuexはstateにはいってないと保持できない
-  loggedIn: false
+  loggedIn: false,
   //trueの場合=>default.vue
   //falseの場合=>welcome.vue
+  styles: {
+    beforeLogin: {
+      appBarHeight: 56
+    }
+  }
 })
 
 export const getters = {}
