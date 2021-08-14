@@ -79,6 +79,12 @@ export default {
       }
     }
   },
+
+  publicRuntimeConfig: {
+    appName: process.env.APP_NAME // 追加
+  },
+
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
