@@ -34,7 +34,27 @@
       nudge-left="110"
       nudge-width="100"
     >
-      <template v-slot:
+      <template v-slot:activator="{ on }">
+        <v-app-bar-nav-icon
+          class="hidden-ipad-and-up"
+          v-on="on"
+        />
+      </template>
+      <v-list
+        dense
+        class="hidden-ipad-and-up"
+      >
+        <v-list-item
+          v-for="(menu,i) in menus"
+          :key="`menu-list-${i}`"
+          exact
+          @click="goTo(menu.title)"
+        >
+        <v-list-item-title>
+          {{ $t(`menus.${menu.title}`) }}
+        </v-list-item-title>
+        </v-list-item>
+      </v-list>  
     </v-menu>
   </v-app-bar>
 </template>
