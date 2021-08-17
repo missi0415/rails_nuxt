@@ -61,7 +61,6 @@
 import appLogo from '~/components/ui/appLogo'
 import loginLink from '~/components/beforeLogin/loginLink.vue'
 import signupLink from '~/components/beforeLogin/signupLink.vue'
-import AppTitle from '../ui/appTitle.vue'
 export default {
   components:{
     appLogo,
