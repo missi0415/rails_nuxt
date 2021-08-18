@@ -7,7 +7,6 @@
     placeholder="あなたの表示名"
     outlined
   ></v-text-field>
-  
 </template>
 
 <script>

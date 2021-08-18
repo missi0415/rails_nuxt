@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable-next-line -->
   <bef-login-form-card #form-card-content>
     <v-form
       ref="form"
@@ -45,6 +46,7 @@ export default {
   data(){
     return {
       isValid: false,
+      loading: false,
       params: { user:{ name: '', email: '', password: ''} }
       //rails にデータを送るためのparams
     }
