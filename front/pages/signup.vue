@@ -1,20 +1,22 @@
 <template>
   <bef-login-form-card #form-card-content>
     <v-form
+      ref="form"
       v-model="isValid"
     >
       <user-form-name 
         :name.sync="params.user.name"
       />
       <!-- :nameは子コンポーネントのpropsで指定した値プロパティをv-bind:nameとして呼び出している -->
-      <user-form-email 
+      <user-form-email
         :email.sync="params.user.email"
       />
       <user-form-password
         :password.sync="params.user.password"
       />
       <v-btn
-        :disabled="!isValid"
+        :disabled="!isValid || loading"
+
         block
         color="myblue"
         class="white--text"
@@ -42,7 +44,6 @@ export default {
   },
   data(){
     return {
-      number: 10,
       isValid: false,
       params: { user:{ name: '', email: '', password: ''} }
       //rails にデータを送るためのparams
@@ -53,6 +54,19 @@ export default {
       get () { return this.name},
       set (newVal){ return this.$emit('update')}
     }
-  }
+  },
+  methods: {
+    signup () {
+      this.loading = true
+      setTimeout(() =>{
+        this.formReset()
+        this.loading = false
+      },1500)
+    },
+    formRseet (){
+      this.$refs.form.reset()
+      this.params = {user: {name: '', email: '', password: ''} }
+    }
+  },
 }
 </script>

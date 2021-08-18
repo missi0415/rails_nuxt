@@ -1,7 +1,9 @@
 <template>
   <v-text-field
+    v-model="setEmail"
+    :rules="rules"
     label="メールアドレスを入力"
-    placeholder="your@email.com"
+    :placeholder="form.placeholder"
     outlined
   />
 </template>
@@ -11,14 +13,31 @@ export default {
   props: {
     email: {
       type: String,
-      default: ''
+      default: '',
+      novalidation: {
+        type: Boolean,
+        default: false
+      }
+    }
+  },
+  data () {
+    return {
+      rules: [
+        v => !!v || '',
+        v => /.+@.+\..+/.test(v) || ''
+      ]
     }
   },
   computed: {
     setEmail: {
       get () {return this.email },
       set (newVal) { return this.$emit('update:email',newVal)}
+    },
+    form () {
+      const placeholder = this.novalidation ? undefined : 'your@email.com'
+      return { placeholder }
     }
+
   }
 }
 </script>
