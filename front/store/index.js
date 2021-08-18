@@ -26,6 +26,9 @@ export const actions = {
   //mutationsはactionsを通して呼ばれる
   login ({ commit }) {
     commit('setLoggedIn', true)
+  },
+  logout ({ commit }){
+    commit('setLoggedIn',false)
   }
 }
 
