@@ -14,17 +14,17 @@
       class="hidden-mobile-and-down"
     />
     <v-spacer />
-    <v-toolvar-items class="ml-2 hidden-ipad-and-down">
-      <v-btn
-        v-for="(menu,i) in menus"
-        :key="`menu-btn-${i}`"
-        text
-        :class="{ 'hidden-sm-and-down': (menu.title === 'about') }"
-        @click="goTo(menu.title)"
-      >
-        {{ $t(`menus.${menu.title}`) }}
-      </v-btn>
-    </v-toolvar-items>
+      <v-toolbar-items class="ml-2 hidden-ipad-and-down">
+        <v-btn
+          v-for="(menu,i) in menus"
+          :key="`menu-btn-${i}`"
+          text
+          :class="{ 'hidden-sm-and-down': (menu.title === 'about') }"
+          @click="goTo(menu.title)"
+        >
+          {{ $t(`menus.${menu.title}`) }}
+        </v-btn>
+      </v-toolbar-items>
     <signup-link />
     <login-link />
     <v-menu
@@ -61,11 +61,13 @@
 import appLogo from '~/components/ui/appLogo'
 import loginLink from '~/components/beforeLogin/loginLink.vue'
 import signupLink from '~/components/beforeLogin/signupLink.vue'
+import appTitle from '../ui/appTitle.vue'
 export default {
   components:{
     appLogo,
     loginLink,
-    signupLink
+    signupLink,
+    appTitle,
   },
   props: {
     menus: {
