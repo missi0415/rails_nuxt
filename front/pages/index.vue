@@ -100,6 +100,7 @@
             item-key="id"
             hide-default-footer
           >
+          <!-- eslint-disable-next-line -->
             <template v-slot:item.name="{ item }">
               <nuxt-link
                 :to="$my.projectLinkTo(item.id)"
@@ -108,6 +109,7 @@
               {{ item.name }}
               </nuxt-link>
             </template>
+            <!-- eslint-disable-next-line -->
             <template v-slot:item.updateAt="{ item }">
               {{ $my.format(item.updatedAt) }}
             </template>
