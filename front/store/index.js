@@ -1,7 +1,7 @@
 export const state = () => ({
   //ログインフラグ
   //vuexはstateにはいってないと保持できない
-  loggedIn: true,
+  loggedIn: false,
   //trueの場合=>default.vue
   //falseの場合=>welcome.vue
   styles: {
@@ -27,7 +27,11 @@ export const mutations = {
   //stateの値を変えるにはmutationsにコミットしないといけない
   setLoggedIn (state, payload) {
     state.loggedIn = payload
+  },
+  setCurrentProject (state,payload){
+    state.current.project = payload
   }
+
   //stateがtrueの状態がログインした状態。ページ遷移した時に保持できる値はstateしか無いためstateに保持させておく
 }
   
@@ -39,6 +43,10 @@ export const actions = {
   },
   logout ({ commit }){
     commit('setLoggedIn',false)
+  },
+  getCurrentProject ({ state, commit }, params) {
+    const currentProject = state.projects.find(project => project.id === Number(params.id))
+    commit('setCurrentProject', currentProject)
   }
 }
 
