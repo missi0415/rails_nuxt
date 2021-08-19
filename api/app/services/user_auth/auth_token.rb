@@ -17,6 +17,12 @@ module UserAuth
         @token = JWT.encode(@payload, secret_key, algorithm, header_fields)
       end
     end
+
+    # subjectからユーザーを検索する
+    def entity_for_user
+      User.find @payload["sub"]
+    end
+
     # ここまで
     private
 
@@ -71,5 +77,6 @@ module UserAuth
     def header_fields
       { typ: "JWT" }
     end
+
   end
 end
