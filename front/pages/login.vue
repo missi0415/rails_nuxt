@@ -58,14 +58,23 @@ export default {
     }
   },
   methods: {
-    login() {
+    async login () {
       this.loading = true
-      setTimeout(() =>{
-        this.$store.dispatch('login')
-        console.log(this)
-        this.$router.push('/')
-        this.loading = false
-      },1500)
+      if (this.isValid) {
+        await this.$axios.$post('/api/v1/user_token', this.params)
+          .then(response => this.authSuccessful(response))
+          .catch(error => this.authFailure(error))
+      }
+      this.loading = false
+    },
+    // 追加
+    // ログイン成功
+    authSuccessful (response) {
+      console.log(response)
+    },
+    // ログイン失敗
+    authFailure ({ response }) {
+      console.log(response)
     }
   }
 }
